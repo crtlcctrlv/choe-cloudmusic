@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.matsu.choe.cloudmusic.web.mapper.SongExtMapper">
+
+  <insert id="insertList">
+    insert into song (song_id, name, alias, 
+      album_id, album_name, artist_id, 
+      artist_name, duration, mv_id, 
+      create_time, update_time)
+    values 
+    <foreach collection="list" item="record" index="index" separator=","> 
+    (#{record.songId,jdbcType=INTEGER}, #{record.name,jdbcType=VARCHAR}, #{record.alias,jdbcType=VARCHAR}, 
+      #{record.albumId,jdbcType=INTEGER}, #{record.albumName,jdbcType=VARCHAR}, #{record.artistId,jdbcType=INTEGER}, 
+      #{record.artistName,jdbcType=VARCHAR}, #{record.duration,jdbcType=INTEGER}, #{record.mvId,jdbcType=INTEGER}, 
+      #{record.createTime,jdbcType=TIMESTAMP}, #{record.updateTime,jdbcType=TIMESTAMP})
+    </foreach>
+  </insert>
+  
+</mapper>

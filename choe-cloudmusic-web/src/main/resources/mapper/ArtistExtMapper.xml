@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.matsu.choe.cloudmusic.web.mapper.ArtistExtMapper">
+
+  <insert id="insertList" parameterType="cn.matsu.choe.cloudmusic.web.entity.po.Artist">
+    insert into artist (artist_id, name, alias, 
+      category, initial, pic_url, brief_desc, music_size, 
+      album_size, mv_size, create_time, 
+      update_time, introduction)
+    values
+    <foreach collection="list" item="record" index="index" separator=",">  
+    (#{record.artistId,jdbcType=INTEGER}, #{record.name,jdbcType=VARCHAR}, #{record.alias,jdbcType=VARCHAR}, 
+      #{record.category,jdbcType=VARCHAR}, #{record.initial,jdbcType=VARCHAR}, #{record.picUrl,jdbcType=VARCHAR}, 
+      #{record.briefDesc,jdbcType=VARCHAR}, #{record.musicSize,jdbcType=SMALLINT}, 
+      #{record.albumSize,jdbcType=SMALLINT}, #{record.mvSize,jdbcType=SMALLINT}, #{record.createTime,jdbcType=TIMESTAMP}, 
+      #{record.updateTime,jdbcType=TIMESTAMP}, #{record.introduction,jdbcType=LONGVARCHAR})
+    </foreach>
+  </insert>
+  
+</mapper>
